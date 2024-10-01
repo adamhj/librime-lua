@@ -39,13 +39,14 @@ struct COMPAT<T, void_t<decltype(std::declval<T>().name_space())>> {
 };
 
 // fallback version of file_path() if librime is old
-template<typename> struct void_t1 { using t = int; };
-template<typename T, typename void_t1<decltype(std::declval<T>().file_name())>::t = 0>
-std::string get_UserDb_file_path_string(const T &t) {
-    return t.file_name();
-}
+// template<typename> struct void_t1 { using t = int; };
+// template<typename T, typename void_t1<decltype(std::declval<T>().file_name())>::t = 0>
+// std::string get_UserDb_file_path_string(const T &t) {
+//    return t.file_name();
+// }
 
-template<typename T, typename void_t1<decltype(std::declval<T>().file_path())>::t = 0>
+// template<typename T, typename void_t1<decltype(std::declval<T>().file_path())>::t = 0>
+template<typename T>
 std::string get_UserDb_file_path_string(const T &t) {
     return t.file_path().string();
 }
